@@ -34,6 +34,7 @@ end
 ```
 
 The `normalized_match` matcher normalizes both strings by:
+
 - Converting to lowercase
 - Removing all punctuation
 - Normalizing whitespace (multiple spaces become single spaces)

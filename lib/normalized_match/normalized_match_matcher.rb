@@ -156,7 +156,8 @@ module NormalizedMatch
     end
 
     # Combine all parts - header, then table (with extra newline between)
-    message = header_output.join("\n") + "\n" + table_output.join("\n\n")
+    # Add a trailing newline so there's a blank line before RSpec's diff (when it appears)
+    message = header_output.join("\n") + "\n" + table_output.join("\n") + "\n"
 
     message
   end
