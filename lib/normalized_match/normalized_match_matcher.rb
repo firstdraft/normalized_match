@@ -81,7 +81,7 @@ module NormalizedMatch
       header_output << ""
     end
 
-    # Helper to center label text (FUZZY/ORIGINAL) in first column
+    # Helper to center label text (NORMALIZED/ORIGINAL) in first column
     def center_label(label, width, total_rows)
       middle_row = total_rows / 2
       (0...total_rows).map do |i|
