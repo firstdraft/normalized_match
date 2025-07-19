@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/raghubetina/code/firstdraft/rspec-enriched_json/fuzzy_match_poc/normalized_match/lib/normalized_match.rb": {
+      "/Users/raghubetina/code/firstdraft/fuzzy_match_poc/normalized_match/lib/normalized_match.rb": {
         "lines": [
           null,
           null,
@@ -26,9 +26,12 @@
           }
         }
       },
-      "/Users/raghubetina/code/firstdraft/rspec-enriched_json/fuzzy_match_poc/normalized_match/lib/normalized_match/normalized_match_matcher.rb": {
+      "/Users/raghubetina/code/firstdraft/fuzzy_match_poc/normalized_match/lib/normalized_match/normalized_match_matcher.rb": {
         "lines": [
           null,
+          null,
+          1,
+          1,
           null,
           1,
           1,
@@ -101,12 +104,11 @@
           2,
           2,
           2,
-          2,
           null,
           1,
           1,
-          1,
           null,
+          3,
           null,
           null,
           3,
@@ -217,21 +219,21 @@
           null
         ],
         "branches": {
-          "[:if, 0, 65, 4, 79, 7]": {
-            "[:then, 1, 66, 6, 74, 25]": 2,
-            "[:else, 2, 76, 6, 78, 25]": 1
+          "[:if, 0, 68, 8, 80, 11]": {
+            "[:then, 1, 69, 10, 76, 74]": 2,
+            "[:else, 2, 78, 10, 79, 65]": 1
           },
-          "[:if, 3, 85, 8, 89, 11]": {
-            "[:then, 4, 86, 10, 86, 29]": 4,
-            "[:else, 5, 88, 10, 88, 21]": 18
+          "[:if, 3, 87, 12, 91, 15]": {
+            "[:then, 4, 88, 14, 88, 33]": 4,
+            "[:else, 5, 90, 14, 90, 25]": 18
           },
-          "[:if, 6, 96, 4, 156, 7]": {
-            "[:then, 7, 99, 6, 133, 133]": 2,
-            "[:else, 8, 137, 6, 155, 99]": 1
+          "[:if, 6, 98, 8, 158, 11]": {
+            "[:then, 7, 101, 10, 135, 137]": 2,
+            "[:else, 8, 139, 10, 157, 103]": 1
           }
         }
       }
     },
-    "timestamp": 1752929740
+    "timestamp": 1752935001
   }
 }

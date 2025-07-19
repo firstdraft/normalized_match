@@ -139,7 +139,7 @@ RSpec.describe "normalized_match matcher" do
           ║  goodbye   ║  hello   ║
           ╚════════════╩══════════╝
         TABLE
-        
+
         expect(error.message).to include(expected_table)
         expect(error.message).to include("The actual output doesn't contain the expected")
         expect(error.message).not_to include("NORMALIZED")
@@ -159,7 +159,7 @@ RSpec.describe "normalized_match matcher" do
           ║   ORIGINAL   ║  goodbye world  ║  Hello, World!  ║
           ╚══════════════╩═════════════════╩═════════════════╝
         TABLE
-        
+
         expect(error.message).to include(expected_table)
         expect(error.message).to include("To make it easier to match the expected")
       end
@@ -168,7 +168,7 @@ RSpec.describe "normalized_match matcher" do
     it "displays table with correct formatting for multiline content" do
       expected = "The quick brown fox jumps over the lazy dog\n" * 10
       actual = ">>> The QUICK brown fox!!! jumps over... the lazy CAT <<<\n" * 10
-      
+
       expect {
         expect(actual.strip).to normalized_match(expected.strip)
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
@@ -199,7 +199,7 @@ RSpec.describe "normalized_match matcher" do
           ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
           ╚══════════════╩═══════════════════════════════════════════════╩═════════════════════════════════════════════════════════════╝
         TABLE
-        
+
         expect(error.message).to include(expected_table)
       end
     end
