@@ -1,5 +1,9 @@
 # Normalized Match
 
+[![CI](https://github.com/firstdraft/normalized_match/actions/workflows/ci.yml/badge.svg)](https://github.com/firstdraft/normalized_match/actions/workflows/ci.yml)
+[![Gem Version](https://badge.fury.io/rb/normalized_match.svg)](https://badge.fury.io/rb/normalized_match)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
+
 A normalized string matcher for RSpec that ignores case, punctuation, and some whitespace differences.
 
 ## Installation
