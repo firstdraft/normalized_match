@@ -9,6 +9,7 @@ gemspec
 group :quality do
   gem "git-lint", "~> 9.0"
   gem "simplecov", "~> 0.22", require: false
+  gem "standard", "~> 1.0"
 end
 
 group :development do
