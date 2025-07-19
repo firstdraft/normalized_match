@@ -7,7 +7,7 @@ unless ENV["NO_COVERAGE"]
     add_filter %r{^/spec/}
     enable_coverage :branch
     enable_coverage_for_eval
-    # minimum_coverage_by_file line: 95, branch: 95
+    minimum_coverage_by_file line: 95, branch: 50
   end
 end
 
@@ -16,9 +16,6 @@ Bundler.require :tools
 require "normalized_match"
 
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
-
-# Load shared contexts
-Dir[SPEC_ROOT.join("support/shared_contexts/**/*.rb")].each { |file| require file }
 
 RSpec.configure do |config|
   config.color = true

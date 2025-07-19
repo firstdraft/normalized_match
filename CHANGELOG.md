@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial implementation of fuzzy_match RSpec matcher
+- Initial implementation of normalized_match RSpec matcher
 - Support for normalizing strings by removing case, punctuation, and extra whitespace
 - Side-by-side comparison table for failed matches
 - Separate display of normalized and original values when normalization occurs

@@ -2,6 +2,9 @@
 
 module NormalizedMatch
   module NormalizedMatchMatcher
+    # Constants for table formatting
+    COLUMN_PADDING = 4 # 2 spaces on each side
+    LABEL_PADDING = 2  # For borders in label column
     RSpec::Matchers.define :normalized_match do |expected|
   match do |actual|
     # Store the original values
@@ -35,11 +38,11 @@ module NormalizedMatch
     max_norm_actual = norm_actual_lines.map(&:length).max || 0
 
     # Ensure minimum column width for headers
-    expected_col_width = [max_orig_expected, max_norm_expected, "EXPECTED".length].max + 4  # 2 spaces padding each side
-    actual_col_width = [max_orig_actual, max_norm_actual, "ACTUAL".length].max + 4
+    expected_col_width = [max_orig_expected, max_norm_expected, "EXPECTED".length].max + COLUMN_PADDING
+    actual_col_width = [max_orig_actual, max_norm_actual, "ACTUAL".length].max + COLUMN_PADDING
 
     # Calculate label column width (for "NORMALIZED" and "ORIGINAL")
-    label_col_width = ["NORMALIZED".length, "ORIGINAL".length].max + 4  # padding
+    label_col_width = ["NORMALIZED".length, "ORIGINAL".length].max + COLUMN_PADDING
 
     # Build the side-by-side table components
 
@@ -54,7 +57,7 @@ module NormalizedMatch
 
     # Helper to left-pad text with 2 spaces on each side
     def pad_line(text, width)
-      "  #{text.to_s.ljust(width - 4)}  "
+      "  #{text.to_s.ljust(width - COLUMN_PADDING)}  "
     end
 
     # Build header output
@@ -106,7 +109,7 @@ module NormalizedMatch
 
       # NORMALIZED section
       max_norm_lines = [norm_expected_lines.length, norm_actual_lines.length].max
-      normalized_labels = center_label("NORMALIZED", label_col_width - 2, max_norm_lines)  # -2 for borders
+      normalized_labels = center_label("NORMALIZED", label_col_width - LABEL_PADDING, max_norm_lines)
 
       max_norm_lines.times do |i|
         expected_line = norm_expected_lines[i] || ""
@@ -120,7 +123,7 @@ module NormalizedMatch
 
       # ORIGINAL section
       max_lines = [orig_expected_lines.length, orig_actual_lines.length].max
-      original_labels = center_label("ORIGINAL", label_col_width - 2, max_lines)  # -2 for borders
+      original_labels = center_label("ORIGINAL", label_col_width - LABEL_PADDING, max_lines)
 
       max_lines.times do |i|
         expected_line = orig_expected_lines[i] || ""

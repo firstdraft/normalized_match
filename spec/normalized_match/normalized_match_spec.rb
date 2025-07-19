@@ -2,16 +2,6 @@
 
 require "spec_helper"
 
-# Mock methods for the example
-def replace_read_only_value(variable_name:, new_value:)
-  # Mock implementation
-end
-
-def run_codeblock
-  # This would be the actual output from running the code
-  # For testing purposes, we'll return different variations
-end
-
 RSpec.describe "normalized_match matcher" do
   describe "Letter count example" do
     it "should match standard output format" do
