@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2025-07-19
+
 ### Added
 - Initial implementation of normalized_match RSpec matcher
 - Support for normalizing strings by removing case, punctuation, and extra whitespace

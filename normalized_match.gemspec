@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "normalized_match"
-  spec.version = "0.0.0"
+  spec.version = "0.1.0"
   spec.authors = ["Raghu Betina"]
   spec.email = ["raghu@firstdraft.com"]
   spec.homepage = "https://github.com/firstdraft/normalized_match"
