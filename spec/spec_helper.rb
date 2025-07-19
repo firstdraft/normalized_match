@@ -14,13 +14,11 @@ end
 Bundler.require :tools
 
 require "normalized_match"
-require "refinements"
 
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
 
-using Refinements::Pathname
-
-Pathname.require_tree SPEC_ROOT.join("support/shared_contexts")
+# Load shared contexts
+Dir[SPEC_ROOT.join("support/shared_contexts/**/*.rb")].each { |file| require file }
 
 RSpec.configure do |config|
   config.color = true

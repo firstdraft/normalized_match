@@ -155,7 +155,7 @@ RSpec.describe "normalized_match matcher" do
       expect {
         expect("hello").to normalized_match("goodbye")
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
-        expect(error.message).to include("Your actual output doesn't contain the")
+        expect(error.message).to include("The actual output doesn't contain the expected")
         expect(error.message).not_to include("NORMALIZED")
         expect(error.message).to include("EXPECTED")
         expect(error.message).to include("ACTUAL")
