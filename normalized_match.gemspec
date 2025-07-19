@@ -5,24 +5,24 @@ Gem::Specification.new do |spec|
   spec.version = "0.0.0"
   spec.authors = ["Raghu Betina"]
   spec.email = ["raghu@firstdraft.com"]
-  spec.homepage = "https://undefined.io/projects/normalized_match"
-  spec.summary = ""
-  spec.license = "Hippocratic-2.1"
+  spec.homepage = "https://github.com/firstdraft/normalized_match"
+  spec.summary = "A normalized string matcher for RSpec that ignores case, punctuation, and whitespace differences"
+  spec.license = "MIT"
 
   spec.metadata = {
-    "bug_tracker_uri" => "https://github.com/undefined/normalized_match/issues",
-    "changelog_uri" => "https://undefined.io/projects/normalized_match/versions",
-    "homepage_uri" => "https://undefined.io/projects/normalized_match",
-    "funding_uri" => "https://github.com/sponsors/undefined",
+    "bug_tracker_uri" => "https://github.com/firstdraft/normalized_match/issues",
+    "changelog_uri" => "https://github.com/firstdraft/normalized_match/blob/main/CHANGELOG.md",
+    "homepage_uri" => "https://github.com/firstdraft/normalized_match",
     "label" => "Normalized Match",
     "rubygems_mfa_required" => "true",
-    "source_code_uri" => "https://github.com/undefined/normalized_match"
+    "source_code_uri" => "https://github.com/firstdraft/normalized_match"
   }
 
-  spec.signing_key = Gem.default_key_path
-  spec.cert_chain = [Gem.default_cert_path]
+  # spec.signing_key = Gem.default_key_path
+  # spec.cert_chain = [Gem.default_cert_path]
 
-  spec.required_ruby_version = "~> 3.4"
+  spec.required_ruby_version = ">= 3.0"
+  spec.add_dependency "rspec", "~> 3.0"
   spec.add_dependency "refinements", "~> 13.0"
   spec.add_dependency "zeitwerk", "~> 2.7"
 
