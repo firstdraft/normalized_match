@@ -63,22 +63,18 @@ module NormalizedMatch
     header_output << ""
 
     if normalization_needed
-      header_output << "To make it easier to match the expected"
-      header_output << "output, we are using normalized matching"
-      header_output << "in this test. That means we took your"
-      header_output << "actual output and the expected output and"
-      header_output << "\"normalized\" them both — downcased,"
-      header_output << "removed punctuation, and compacted"
-      header_output << "whitespace."
+      header_output << "To make it easier to match the expected output,"
+      header_output << "we are \"normalizing\" both the actual output and"
+      header_output << "expected output in this test. That means we"
+      header_output << "lowercased, removed punctuation, and compacted"
+      header_output << "whitespace in both."
       header_output << ""
-      header_output << "Unfortunately, your actual output doesn't"
-      header_output << "contain the expected output. The expected"
-      header_output << "output should appear somewhere within"
-      header_output << "your actual output."
+      header_output << "But the actual output still doesn't contain the"
+      header_output << "expected output. Can you spot the difference?"
       header_output << ""
     else
-      header_output << "Your actual output doesn't contain the"
-      header_output << "expected output."
+      header_output << "The actual output doesn't contain the expected"
+      header_output << "output. Can you spot the difference?"
       header_output << ""
     end
 
@@ -160,7 +156,7 @@ module NormalizedMatch
     end
 
     # Combine all parts - header, then table (with extra newline between)
-    message = header_output.join("\n") + "\n" + table_output.join("\n")
+    message = header_output.join("\n") + "\n" + table_output.join("\n\n")
 
     message
   end
