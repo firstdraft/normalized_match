@@ -138,27 +138,79 @@ RSpec.describe "normalized_match matcher" do
   end
 
   describe "Failure message formatting" do
-    it "displays a helpful table when normalization is needed" do
-      expect {
-        expect("Hello, World!").to normalized_match("goodbye world")
-      }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
-        expect(error.message).to include("Normalized match failed!")
-        expect(error.message).to include("To make it easier to match the expected")
-        expect(error.message).to include("NORMALIZED")
-        expect(error.message).to include("ORIGINAL")
-        expect(error.message).to include("hello world")
-        expect(error.message).to include("Hello, World!")
-      end
-    end
-
-    it "displays simple table when no normalization is needed" do
+    it "displays correct simple table when no normalization is needed (single line)" do
       expect {
         expect("hello").to normalized_match("goodbye")
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
+        expected_table = <<~TABLE.strip
+          ╔════════════╦══════════╗
+          ║  EXPECTED  ║  ACTUAL  ║
+          ╠════════════╬══════════╣
+          ║  goodbye   ║  hello   ║
+          ╚════════════╩══════════╝
+        TABLE
+        
+        expect(error.message).to include(expected_table)
         expect(error.message).to include("The actual output doesn't contain the expected")
         expect(error.message).not_to include("NORMALIZED")
-        expect(error.message).to include("EXPECTED")
-        expect(error.message).to include("ACTUAL")
+      end
+    end
+
+    it "displays normalized table for single line with punctuation differences" do
+      expect {
+        expect("Hello, World!").to normalized_match("goodbye world")
+      }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
+        expected_table = <<~TABLE.strip
+          ╔══════════════╦═════════════════╦═════════════════╗
+          ║              ║    EXPECTED     ║     ACTUAL      ║
+          ╠══════════════╬═════════════════╬═════════════════╣
+          ║  NORMALIZED  ║  goodbye world  ║  hello world    ║
+          ╠══════════════╬═════════════════╬═════════════════╣
+          ║   ORIGINAL   ║  goodbye world  ║  Hello, World!  ║
+          ╚══════════════╩═════════════════╩═════════════════╝
+        TABLE
+        
+        expect(error.message).to include(expected_table)
+        expect(error.message).to include("To make it easier to match the expected")
+      end
+    end
+
+    it "displays table with correct formatting for multiline content" do
+      expected = "The quick brown fox jumps over the lazy dog\n" * 10
+      actual = ">>> The QUICK brown fox!!! jumps over... the lazy CAT <<<\n" * 10
+      
+      expect {
+        expect(actual.strip).to normalized_match(expected.strip)
+      }.to raise_error(RSpec::Expectations::ExpectationNotMetError) do |error|
+        expected_table = <<~TABLE.strip
+          ╔══════════════╦═══════════════════════════════════════════════╦═════════════════════════════════════════════════════════════╗
+          ║              ║                   EXPECTED                    ║                           ACTUAL                            ║
+          ╠══════════════╬═══════════════════════════════════════════════╬═════════════════════════════════════════════════════════════╣
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║  NORMALIZED  ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ║              ║  the quick brown fox jumps over the lazy dog  ║  the quick brown fox jumps over the lazy cat                ║
+          ╠══════════════╬═══════════════════════════════════════════════╬═════════════════════════════════════════════════════════════╣
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║   ORIGINAL   ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ║              ║  The quick brown fox jumps over the lazy dog  ║  >>> The QUICK brown fox!!! jumps over... the lazy CAT <<<  ║
+          ╚══════════════╩═══════════════════════════════════════════════╩═════════════════════════════════════════════════════════════╝
+        TABLE
+        
+        expect(error.message).to include(expected_table)
       end
     end
   end
