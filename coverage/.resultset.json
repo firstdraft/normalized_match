@@ -10,21 +10,9 @@
           null,
           null,
           1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
           null
         ],
-        "branches": {
-          "[:if, 0, 11, 0, 15, 3]": {
-            "[:then, 1, 12, 2, 14, 5]": 1,
-            "[:else, 2, 11, 0, 15, 3]": 0
-          }
-        }
+        "branches": {}
       },
       "/Users/raghubetina/code/firstdraft/fuzzy_match_poc/normalized_match/lib/normalized_match/normalized_match_matcher.rb": {
         "lines": [
@@ -234,6 +222,6 @@
         }
       }
     },
-    "timestamp": 1752935001
+    "timestamp": 1753124511
   }
 }

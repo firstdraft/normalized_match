@@ -12,15 +12,11 @@ end
 
 group :development do
   gem "rake", "~> 13.2"
+  gem "amazing_print", "~> 1.8"
+  gem "debug", "~> 1.10"
+  gem "repl_type_completor", "~> 0.1"
 end
 
 group :test do
   gem "rspec", "~> 3.13"
-end
-
-group :tools do
-  gem "amazing_print", "~> 1.8"
-  gem "debug", "~> 1.10"
-  gem "irb-kit", "~> 1.1"
-  gem "repl_type_completor", "~> 0.1"
 end
