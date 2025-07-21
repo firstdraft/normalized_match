@@ -100,7 +100,7 @@ d: 1
 
 ## Example Output
 
-When strings don't match after normalization:
+When strings don't match after normalization, the matcher displays a helpful table:
 
 ```
 Normalized match failed!
