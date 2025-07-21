@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "normalized_match"
-  spec.version = "0.2.0"
+  spec.version = "0.3.0"
   spec.authors = ["Raghu Betina"]
   spec.email = ["raghu@firstdraft.com"]
   spec.homepage = "https://github.com/firstdraft/normalized_match"
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     "source_code_uri" => "https://github.com/firstdraft/normalized_match"
   }
 
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.2"
   spec.add_dependency "rspec", "~> 3.0"
 
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
