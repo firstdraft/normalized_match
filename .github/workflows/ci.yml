@@ -23,7 +23,7 @@ jobs:
         bundler-cache: true
     
     - name: Run StandardRB
-      run: bundle exec standardrb --parallel
+      run: bundle exec standardrb
     
     - name: Run specs with coverage
       run: bundle exec rspec
